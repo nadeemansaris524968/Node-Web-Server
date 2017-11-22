@@ -19,9 +19,9 @@ app.use((req, res, next) => {
 });
 
 // Middleware that stops showing any other files
-app.use((req, res, next) => {
-    res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs');
+// });
 
 // app.get('/', (req, res) => {
 //     // res.send('<h1>Hello World!</h1>');
@@ -34,6 +34,14 @@ app.use((req, res, next) => {
 //     });
 // });
 
+app.get('/', (req, res) => {
+    res.render('home.hbs', {
+        welcomeMessage: 'Welcome',
+        pageTitle: 'Home page',
+        currentYear: new Date().getFullYear()
+    });
+});
+
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About Page',
@@ -41,11 +49,9 @@ app.get('/about', (req, res) => {
     });
 });
 
-app.get('/', (req, res) => {
-    res.render('home.hbs', {
-        welcomeMessage: 'Welcome',
-        pageTitle: 'Home page',
-        currentYear: new Date().getFullYear()
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects'
     });
 });
 
